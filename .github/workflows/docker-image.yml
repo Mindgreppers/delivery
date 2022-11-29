@@ -20,3 +20,11 @@ jobs:
           ls
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag mind-grep:$(date +%s)
+
+    - name: Push Docker Images
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: adminmindgrep/mind-grep:$(date +%s)
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
