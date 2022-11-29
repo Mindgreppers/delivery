@@ -12,10 +12,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      with:
-        ref: master
-        clean: 'true'
-        token: '${{ secrets.GIT_TOKEN }}'
-        submodules: 'recursive'
-        fetch-depth: '0'        
+      # with:
+      #   ref: master
+      #   clean: 'true'
+      #   token: '${{ secrets.GIT_TOKEN }}'
+      #   submodules: 'recursive'
+      #   fetch-depth: '0'        
+    
+    - name: Present Working Directory
+      run: |
+          pwd
+          ls
    
