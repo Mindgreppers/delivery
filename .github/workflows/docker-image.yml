@@ -30,5 +30,6 @@ jobs:
     - name: Application Deployment
       run: |
           cd helm-chart
-        #  helm install delivery . -n delivery --set image.repository=adminmindgrep/delivery
           helm template --dry-run . --set image.repository=adminmindgrep/delivery
+          
+#  helm install delivery . -n delivery --set image.repository=adminmindgrep/delivery
