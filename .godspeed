@@ -1,1 +1,1 @@
-{"projectName":"delivery","mongodb":false,"postgresql":true,"postgresDbName":"delivery","kafka":true,"elasticsearch":false,"redis":false,"svcPort":3000,"postgresDbPort":5432,"zookeeperPort":2181,"kafkaPort":9092}
+{"projectName":"delivery","mongodb":false,"postgresql":true,"postgresDbName":"delivery","kafka":false,"elasticsearch":false,"redis":false,"svcPort":3000,"postgresDbPort":5432}

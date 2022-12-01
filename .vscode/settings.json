@@ -21,7 +21,6 @@
     },
     "files.exclude": {
         "**/gs_service": true,
-        "**/node_modules": true,
-        "**/package*": true
+        "**/node_modules": true
     }
 }

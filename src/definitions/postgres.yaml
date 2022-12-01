@@ -1,0 +1,17 @@
+DeliveryPartner:
+  type: object
+  properties:
+    email:
+      type: string
+    name:
+      type: string
+      nullable: true
+    llLatitude:
+      type: string
+      nullable: true
+    llLongitude:
+      type: string
+      nullable: true
+    location:
+      type: string
+      nullable: true

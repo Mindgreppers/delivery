@@ -1,0 +1,9 @@
+summary: Fetch many DeliveryPartner
+tasks:
+  - id: postgres_deliverypartner_search
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data: <% inputs.body %>
+      config:
+        method: DeliveryPartner.findMany

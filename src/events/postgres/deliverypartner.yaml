@@ -1,0 +1,88 @@
+# ONE
+/postgres/deliverypartner/:id.http.get:
+  summary: Fetch DeliveryPartner
+  description: Fetch DeliveryPartner from database
+  fn: com.biz.postgres.deliverypartner.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/deliverypartner.http.post:
+  summary: Create a new DeliveryPartner
+  description: Create DeliveryPartner from database
+  fn: com.biz.postgres.deliverypartner.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/DeliveryPartner'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/deliverypartner/:id.http.put:
+  summary: Update a DeliveryPartner
+  description: Update DeliveryPartner from database
+  fn: com.biz.postgres.deliverypartner.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/DeliveryPartner'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/deliverypartner/:id.http.delete:
+  summary: Delete a DeliveryPartner
+  description: Delete DeliveryPartner from database
+  fn: com.biz.postgres.deliverypartner.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/deliverypartner/search.http.post:
+  summary: Fetch multiple DeliveryPartner
+  description: Fetch multiple DeliveryPartner from database
+  fn: com.biz.postgres.deliverypartner.search
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/DeliveryPartner'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+
