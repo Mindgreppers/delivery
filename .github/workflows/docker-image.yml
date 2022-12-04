@@ -32,6 +32,11 @@ jobs:
         push: true
         tags: adminmindgrep/delivery:${{ github.run_id }}
 
+    - name: Deploy Delivery App
+      run: | 
+          cd helm-chart
+          helm template --dry-run . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }}
+
     # - name: Deploy Helm chart 
     #   uses: hahow/install-helm-chart-action@v1
     #   with:
