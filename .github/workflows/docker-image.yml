@@ -55,6 +55,6 @@ jobs:
           kubectl get pods -n app
           helm ls -n app
           cd helm-chart
-          helm upgrade delivery . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }}
+          helm upgrade delivery . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }} -n app
           sleep 30
           kubectl get pods -n app
