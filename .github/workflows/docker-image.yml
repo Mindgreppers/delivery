@@ -50,6 +50,11 @@ jobs:
       run: |
           gcloud info
     
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: '${{ secrets.GCLOUD_AUTH_KEY }}'
+
     - id: 'get-credentials'
       uses: 'google-github-actions/get-gke-credentials@v1'
       with:
