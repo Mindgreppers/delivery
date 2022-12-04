@@ -26,16 +26,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # - name: Build and push
-    #   uses: docker/build-push-action@v3
-    #   with:
-    #     push: true
-    #     tags: adminmindgrep/delivery:${{ github.run_id }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: adminmindgrep/delivery:${{ github.run_id }}
 
     - name: Deploy Delivery App
       run: | 
           cd helm-chart
-          helm template --dry-run . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }} --kubeconfig='${{ secrets.KUBECONFIG }}'
+          helm upgrade delivery --dry-run . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }} --kubeconfig='${{ secrets.KUBECONFIG }}'
 
     # - name: Deploy Helm chart 
     #   uses: hahow/install-helm-chart-action@v1
