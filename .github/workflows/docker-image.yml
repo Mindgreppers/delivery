@@ -49,4 +49,5 @@ jobs:
     - name: 'Use gcloud CLI'
       run: |
           gcloud info
+          gcloud container clusters get-credentials godspeed --zone us-central1-c --project high-keel-368610
           kubectl get pods -n apps
