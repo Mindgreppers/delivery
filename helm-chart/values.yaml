@@ -88,7 +88,6 @@ secrets:
     username1: avtar
     username2: rishabh
 
-
 existingsecret:
   enabled: true
   name: db-creds
@@ -97,6 +96,8 @@ env:
   data: 
     OTEL_SERVICE_NAME: delivery
     OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: http://otel-collector.monitoring.svc:4317
+
+containerPort: 3000
 
 nodeSelector: {}
 
