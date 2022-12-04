@@ -38,28 +38,24 @@ jobs:
     #       gcloud container clusters get-credentials godspeed --zone us-central1-c --project high-keel-368610
     #       helm upgrade delivery --dry-run . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }}
 
-    # - id: 'auth'
-    #   uses: 'google-github-actions/auth@v1'
-    #   with:
-    #     credentials_json: '${{ secrets.GCLOUD_AUTH_KEY }}'
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: '${{ secrets.GCLOUD_AUTH_KEY }}'
 
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v1'
 
-    # - name: 'Use gcloud CLI'
-    #   run: |
-    #       gcloud info
-    
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        credentials_json: '${{ secrets.gcp_credentials }}'
+    - name: 'Use gcloud CLI'
+      run: |
+          gcloud info
 
     - id: 'get-credentials'
       uses: 'google-github-actions/get-gke-credentials@v1'
       with:
         cluster_name: 'godspeed'
         location: 'us-central1-c'
+        use_connect_gateway: 'true'
 
     # The KUBECONFIG env var is automatically exported and picked up by kubectl.
     - id: 'get-pods'
