@@ -49,19 +49,20 @@ jobs:
     - name: 'Use gcloud CLI'
       run: |
           gcloud info
-          gcloud auth login --cred-file='${{ secrets.GCLOUD_AUTH_KEY }}'
+
     # - id: 'get-credentials'
     #   uses: 'google-github-actions/get-gke-credentials@v1'
     #   with:
     #     cluster_name: 'godspeed'
     #     location: 'us-central1-c'
     #     use_connect_gateway: 'true'
-    
-    # - id: 'auth'
-    #   uses: 'google-github-actions/auth@v1'
-    #   with:
-    #     workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-    #     service_account: 'app-ns-sa@high-keel-368610.iam.gserviceaccount.com'
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+        
     # The KUBECONFIG env var is automatically exported and picked up by kubectl.
     - id: 'get-pods'
       run: 'kubectl get pods'
