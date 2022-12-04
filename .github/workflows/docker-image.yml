@@ -32,15 +32,32 @@ jobs:
         push: true
         tags: adminmindgrep/orchestrator:${{ github.run_id }}
 
-    - name: Deploy Helm chart 
-      uses: hahow/install-helm-chart-action@v1
+    # - name: Deploy Helm chart 
+    #   uses: hahow/install-helm-chart-action@v1
+    #   with:
+    #     gcloud_auth_key: ${{ secrets.GCLOUD_AUTH_KEY }}
+    #     gcloud_project_id: high-keel-368610
+    #     cluster_name: godspeed
+    #     cluster_region: us-central1-c
+    #     release_namespace: app
+    #     chart_name: ./helm-chart/
+    #     release_name: delivery
+    #     helm_upgrade_args: |
+    #       --set image.tag=${{ github.sha }}
+
+    - name: 'Deploy'
+      uses: 'deliverybot/helm@v1'
       with:
-        gcloud_auth_key: ${{ secrets.GCLOUD_AUTH_KEY }}
-        gcloud_project_id: high-keel-368610
-        cluster_name: godspeed
-        cluster_region: us-central1-c
-        release_namespace: app
-        release_name: payment-system
-        chart_name: ./helm-chart/
-        helm_upgrade_args: |
-          --set image.tag=${{ github.sha }}
+        release: adminmindgrep/orchestrator:${{ github.run_id }}
+        namespace: 'app'
+        chart: 'delivery'
+        token: '${{ github.token }}'
+        values: |
+          name: foobar
+        # value-files: >-
+        # [
+        #   "values.yaml", 
+        # ]
+        value-files: ./helm-chart/values.yaml
+      env:
+        KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
