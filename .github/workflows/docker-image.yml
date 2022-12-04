@@ -48,5 +48,5 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
-          'gcloud info'
-          'kubectl get pods -n apps'
+          gcloud info
+          kubectl get pods -n apps
