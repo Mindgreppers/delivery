@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: adminmindgrep/orchestrator:${{ github.run_id }}
+        tags: adminmindgrep/delivery:${{ github.run_id }}
 
     # - name: Deploy Helm chart 
     #   uses: hahow/install-helm-chart-action@v1
@@ -48,7 +48,7 @@ jobs:
     - name: 'Deploy'
       uses: 'deliverybot/helm@v1'
       with:
-        release: adminmindgrep/orchestrator:${{ github.run_id }}
+        release: adminmindgrep/delivery:${{ github.run_id }}
         namespace: 'app'
         chart: 'delivery'
         token: '${{ github.token }}'
