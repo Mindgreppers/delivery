@@ -90,13 +90,13 @@ secrets:
 
 
 existingsecret:
-  enabled: false
-  name: lp-secret
+  enabled: true
+  name: db-creds
 
 env:
   data: 
-    test1: env_block
-    test2: new_env_block
+    OTEL_SERVICE_NAME: delivery
+    OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: http://otel-collector.monitoring.svc:4317
 
 nodeSelector: {}
 
