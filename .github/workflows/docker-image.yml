@@ -55,7 +55,7 @@ jobs:
       with:
         cluster_name: 'godspeed'
         location: 'us-central1-c'
-        use_connect_gateway: 'true'
+        # use_connect_gateway: 'true'
     
     # - id: 'auth'
     #   uses: 'google-github-actions/auth@v1'
