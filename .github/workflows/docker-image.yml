@@ -26,17 +26,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # - name: Build and push
-    #   uses: docker/build-push-action@v3
-    #   with:
-    #     push: true
-    #     tags: adminmindgrep/delivery:${{ github.run_id }}
-
-    # - name: Deploy Delivery App
-    #   run: | 
-    #       cd helm-chart
-    #       gcloud container clusters get-credentials godspeed --zone us-central1-c --project high-keel-368610
-    #       helm upgrade delivery --dry-run . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: adminmindgrep/delivery:${{ github.run_id }}
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
@@ -55,16 +49,11 @@ jobs:
       with:
         cluster_name: 'godspeed'
         location: 'us-central1-c'
-        # use_connect_gateway: 'true'
-    
-    # - id: 'auth'
-    #   uses: 'google-github-actions/auth@v1'
-    #   with:
-    #     workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-    #     service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
-    # The KUBECONFIG env var is automatically exported and picked up by kubectl.
     
     - id: 'get-pods'
       run: |
           kubectl get pods -n app
           helm ls -n app
+          helm upgrade delivery . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }}
+          sleep 30
+          kubectl get pods -n app
