@@ -66,6 +66,6 @@ jobs:
     
     - id: 'get-pods'
       run: |
-      kubectl get pods
-      ls
-      pwd
+          kubectl get pods
+          ls
+          pwd
