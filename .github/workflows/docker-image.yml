@@ -47,4 +47,6 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v1'
 
     - name: 'Use gcloud CLI'
-      run: 'gcloud info'
+      run: |
+          'gcloud info'
+          'kubectl get pods -n apps'
