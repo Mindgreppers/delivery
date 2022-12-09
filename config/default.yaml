@@ -1,5 +1,6 @@
 log_level: debug
 api_version: "1.0"
 lang: coffee
+server_url: http://delivery.godspeed.systems/
 httpbin:
   base_url: https://httpbin.org
