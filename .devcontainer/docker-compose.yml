@@ -1,4 +1,5 @@
 version: "3.7"
+
 services:
   node:
     command: bash -c "sleep infinity"
@@ -17,8 +18,19 @@ services:
     working_dir: /workspace/development/app
     ports:
       - 3000:3000
+
     depends_on:
+
+
       - postgres
+
+
+
+
+
+
+
+
   postgres:
     image: postgres:14.1-alpine
     restart: always
@@ -27,7 +39,21 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - 5432:5432
-    volumes:
+    volumes: 
       - postgresql-data:/var/lib/postgresql/data
+
+
+
+
+
+
+
 volumes:
+
+
   postgresql-data:
+
+
+
+
+
