@@ -90,7 +90,7 @@ secrets:
 
 existingsecret:
   enabled: true
-  name: db-creds
+  name: delivery-db-creds
 
 env:
   data: 
