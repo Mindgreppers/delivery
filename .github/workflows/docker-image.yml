@@ -18,7 +18,7 @@ jobs:
       run: |
           pwd
           ls
-          echo ${{ github.run_id }}
+          echo ${{ "github.run_id" }}
 
     - name: Login to DockerHub
       uses: docker/login-action@v1 
@@ -37,6 +37,13 @@ jobs:
           git clone https://rishabhmindgrep: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@github.com/Mindgreppers/delivery.git
           pwd
           ls -ltr
+          cd helm-chart
+          NEW_TAG={{ "github.run_id" }}
+          OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
+          sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
+          cat values.yaml
+          
+
 
 
 
