@@ -37,7 +37,8 @@ jobs:
           git clone https://rishabhmindgrep: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@github.com/Mindgreppers/delivery.git
           pwd
           ls -ltr
-          cd helm-chart/
+          cd delivery/
+          ls
           NEW_TAG={{ github.run_id }}
           OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
           sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
