@@ -26,35 +26,44 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: adminmindgrep/delivery:${{ github.run_id }}
+    # - name: Build and push
+    #   uses: docker/build-push-action@v3
+    #   with:
+    #     push: true
+    #     tags: adminmindgrep/delivery:${{ github.run_id }}
 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        credentials_json: '${{ secrets.GCLOUD_AUTH_KEY }}'
+    - name: Edit helm chart and push back to gitHub
+      run: | 
+          git clone https://rishabhmindgrep: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@github.com/Mindgreppers/delivery.git
+          pwd
+          ls -ltr
 
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v1'
 
-    - name: 'Use gcloud CLI'
-      run: |
-          gcloud info
 
-    - id: 'get-credentials'
-      uses: 'google-github-actions/get-gke-credentials@v1'
-      with:
-        cluster_name: 'godspeed'
-        location: 'us-central1-c'
+
+    # - id: 'auth'
+    #   uses: 'google-github-actions/auth@v1'
+    #   with:
+    #     credentials_json: '${{ secrets.GCLOUD_AUTH_KEY }}'
+
+    # - name: 'Set up Cloud SDK'
+    #   uses: 'google-github-actions/setup-gcloud@v1'
+
+    # - name: 'Use gcloud CLI'
+    #   run: |
+    #       gcloud info
+
+    # - id: 'get-credentials'
+    #   uses: 'google-github-actions/get-gke-credentials@v1'
+    #   with:
+    #     cluster_name: 'godspeed'
+    #     location: 'us-central1-c'
     
-    - id: 'get-pods'
-      run: |
-          kubectl get pods -n app
-          helm ls -n app
-          cd helm-chart
-          helm upgrade delivery . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }} -n app
-          sleep 30
-          kubectl get pods -n app
+    # - id: 'get-pods'
+    #   run: |
+    #       kubectl get pods -n app
+    #       helm ls -n app
+    #       cd helm-chart
+    #       helm upgrade delivery . --set image.repository=adminmindgrep/delivery --set image.tag=${{ github.run_id }} -n app
+    #       sleep 30
+    #       kubectl get pods -n app
