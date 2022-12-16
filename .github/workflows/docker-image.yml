@@ -41,8 +41,8 @@ jobs:
           ls
           cd helm-chart/
           ls
-          OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
-          sed -i "s/$OLD_TAG/"${{ github.run_id }}"/g" values.yaml
+          OLD_TAG=`grep "tag: " values.yaml | awk '{print $2}'`
+          sed -i "s/$OLD_TAG/${{ github.run_id }}/g" values.yaml
           #NEW_TAG= {{ github.run_id }}
           # OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
           # sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
