@@ -8,7 +8,7 @@ image:
   repository: adminmindgrep/delivery
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 3715477084
+  tag: 3715479136
 
 imagePullSecrets: []
 name: ""
