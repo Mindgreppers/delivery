@@ -40,10 +40,11 @@ jobs:
           cd delivery/
           ls
           cd helm-chart/
-          NEW_TAG={{ github.run_id }}
-          OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
-          sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
-          cat values.yaml
+          ls
+          # NEW_TAG={{ github.run_id }}
+          # OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
+          # sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
+          # cat values.yaml
           
 
 
