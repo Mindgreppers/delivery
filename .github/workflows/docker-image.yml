@@ -47,8 +47,10 @@ jobs:
           # OLD_TAG=`grep "tag: " helm-chart/values.yaml | awk '{print $2}'`
           # sed -i "s/$OLD_TAG/$NEW_TAG/g" values.yaml
           cat values.yaml
-          git add .
-          git commit -m "WIP: Rishabh"
+          git config user.name "Rishabh"
+          git config user.email "rishabh@godspeed.systems"
+          git add values.yaml
+          git commit -m "Upgraded the delivery image tag to ${{ github.run_id }}"
           git push
           
 
