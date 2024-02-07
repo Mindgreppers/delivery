@@ -4,6 +4,7 @@ metadata:
   name: delivery
   annotations:
     github.com/project-slug: godspeedsystems/delivery
+    argocd/app-name: "gsdoc-dev"    
 spec:
   type: other
   lifecycle: unknown
