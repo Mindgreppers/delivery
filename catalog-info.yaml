@@ -6,7 +6,6 @@ metadata:
     github.com/project-slug: godspeedsystems/delivery
     argocd/app-name: "gsdoc-dev"
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=gsdoc-dev'
-    backstage.io/kubernetes-id: "backstage-argo-app"
 spec:
   type: service
   lifecycle: production
