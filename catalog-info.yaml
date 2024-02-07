@@ -7,6 +7,6 @@ metadata:
     argocd/app-name: "gsdoc-dev"
     backstage.io/kubernetes-id: "backstage-argo-app"
 spec:
-  type: api
+  type: service
   lifecycle: production
-  owner: default
+  owner: "group:default/guests"
