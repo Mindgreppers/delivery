@@ -4,7 +4,8 @@ metadata:
   name: delivery
   annotations:
     github.com/project-slug: godspeedsystems/delivery
-    argocd/app-name: "gsdoc-dev"    
+    argocd/app-name: "gsdoc-dev"
+    backstage.io/kubernetes-id: "backstage-argo-app"
 spec:
   type: other
   lifecycle: unknown
